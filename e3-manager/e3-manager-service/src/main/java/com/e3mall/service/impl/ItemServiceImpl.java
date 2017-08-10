@@ -73,7 +73,7 @@ public class ItemServiceImpl implements ItemService {
 		// 7、调用E3Result.ok()方法
 		return E3Result.ok();
 	}
-	
+
 	public E3Result queryItemDescById(long id) {
 		// 获取商品描述TbItemDesc对象
 		TbItemDesc itemDesc = itemDescMapper.selectByPrimaryKey(id);
@@ -82,48 +82,45 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	public E3Result editItem(TbItem item, String desc) {
-		// 获取商品id
-		Long id = item.getId();
-		TbItem tbItem = itemMapper.selectByPrimaryKey(id);
-		// 1、设置商品属性
-		item.setCreated(tbItem.getCreated());
-		item.setStatus(tbItem.getStatus());
+		// 1、更新商品修改时间
 		Date date = new Date();
 		item.setUpdated(date);
-		// 2、更新商品数据
-		itemMapper.updateByPrimaryKey(item);
+		// 2、更新商品信息
+		itemMapper.updateByPrimaryKeySelective(item);
 		// 3、获取TbItemDesc对象
-		TbItemDesc itemDesc = itemDescMapper.selectByPrimaryKey(id);
+		TbItemDesc itemDesc = itemDescMapper.selectByPrimaryKey(item.getId());
 		// 4、更新TbItemDesc的属性
 		itemDesc.setItemDesc(desc);
 		itemDesc.setUpdated(date);
-		// 5、向商品描述表插入数据 
+		// 5、更新商品描述信息
 		itemDescMapper.updateByPrimaryKeyWithBLOBs(itemDesc);
-		// 6、E3Result.ok()
 		return E3Result.ok();
 	}
 
 	public E3Result deleteItem(String ids) {
-		setItemStatus(ids,3);
+		setItemStatus(ids, 3);
 		return E3Result.ok();
 	}
 
 	public E3Result instockItem(String ids) {
-		setItemStatus(ids,2);
+		setItemStatus(ids, 2);
 		return E3Result.ok();
 	}
-	
+
 	public E3Result reshelfItem(String ids) {
-		setItemStatus(ids,1);
+		setItemStatus(ids, 1);
 		return E3Result.ok();
 	}
 
 	/**
 	 * 设置商品状态
-	 * @param ids 商品编号
-	 * @param status 商品状态
+	 * 
+	 * @param ids
+	 *            商品编号
+	 * @param status
+	 *            商品状态
 	 */
-	private void setItemStatus(String ids,int status) {
+	private void setItemStatus(String ids, int status) {
 		// 获取各个商品id
 		String[] itemIds = ids.split(",");
 		for (String itemId : itemIds) {
@@ -131,7 +128,7 @@ public class ItemServiceImpl implements ItemService {
 			// 获取商品信息
 			TbItem item = itemMapper.selectByPrimaryKey(id);
 			// 设置商品状态，1-正常，2-下架，3-删除
-			item.setStatus((byte)status);
+			item.setStatus((byte) status);
 			// 设置修改时间
 			item.setUpdated(new Date());
 			// 更新商品信息
