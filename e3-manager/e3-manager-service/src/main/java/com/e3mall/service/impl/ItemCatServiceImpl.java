@@ -13,6 +13,11 @@ import com.e3mall.pojo.TbItemCatExample;
 import com.e3mall.pojo.TbItemCatExample.Criteria;
 import com.e3mall.service.ItemCatService;
 
+/**
+ * 商品分类service
+ * @author ZNG
+ *
+ */
 @Service
 public class ItemCatServiceImpl implements ItemCatService {
 	@Autowired

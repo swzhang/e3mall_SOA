@@ -18,6 +18,11 @@ import com.e3mall.service.ItemService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
+/**
+ * 商品管理service
+ * @author ZNG
+ *
+ */
 @Service
 public class ItemServiceImpl implements ItemService {
 
