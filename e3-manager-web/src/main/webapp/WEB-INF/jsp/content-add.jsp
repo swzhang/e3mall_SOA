@@ -70,7 +70,7 @@
 					if(data.status == 200){
 						$.messager.alert('提示','新增内容成功!');
     					$("#contentList").datagrid("reload");
-    					E3.closeCurrentWindow();
+    					//E3.closeCurrentWindow();
 					}
 				});
 			},

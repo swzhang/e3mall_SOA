@@ -11,6 +11,11 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.e3mall</groupId>
+			<artifactId>e3-common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.e3mall</groupId>
 			<artifactId>e3-manager-interface</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
@@ -100,7 +105,7 @@
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<configuration>
 					<path>/</path>
-					<port>8080</port>
+					<port>8082</port>
 				</configuration>
 			</plugin>
 		</plugins>
