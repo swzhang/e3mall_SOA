@@ -3,7 +3,7 @@
 <script type="text/javascript" charset="utf-8" src="/js/kindeditor-4.1.10/kindeditor-all-min.js"></script>
 <script type="text/javascript" charset="utf-8" src="/js/kindeditor-4.1.10/lang/zh_CN.js"></script>
 <div style="padding:10px 10px 10px 10px">
-	<form id="itemeEditForm" class="itemForm" method="post">
+	<form id="itemEditForm" class="itemForm" method="post">
 		<input type="hidden" name="id"/>
 	    <table cellpadding="5">
 	        <tr>
@@ -68,19 +68,20 @@
 	var itemEditEditor ;
 	$(function(){
 		//实例化编辑器
-		itemEditEditor = E3.createEditor("#itemeEditForm [name=desc]");
+		itemEditEditor = E3.createEditor("#itemEditForm [name=desc]");
 	});
 	
 	function submitForm(){
-		if(!$('#itemeEditForm').form('validate')){
+		if(!$('#itemEditForm').form('validate')){
 			$.messager.alert('提示','表单还未填写完成!');
 			return ;
 		}
-		$("#itemeEditForm [name=price]").val(eval($("#itemeEditForm [name=priceView]").val()) * 1000);
+		$("#itemEditForm [name=price]").val(eval($("#itemEditForm [name=priceView]").val()) * 1000);
 		itemEditEditor.sync();
 		
+		//取商品的规格
 		var paramJson = [];
-		$("#itemeEditForm .params li").each(function(i,e){
+		$("#itemEditForm .params li").each(function(i,e){
 			var trs = $(e).find("tr");
 			var group = trs.eq(0).text();
 			var ps = [];
@@ -98,9 +99,9 @@
 		});
 		paramJson = JSON.stringify(paramJson);
 		
-		$("#itemeEditForm [name=itemParams]").val(paramJson);
+		$("#itemEditForm [name=itemParams]").val(paramJson);
 		
-		$.post("/rest/item/update",$("#itemeEditForm").serialize(), function(data){
+		$.post("rest/item/update",$("#itemEditForm").serialize(), function(data){
 			if(data.status == 200){
 				$.messager.alert('提示','修改商品成功!','info',function(){
 					$("#itemEditWindow").window('close');
