@@ -12,7 +12,7 @@
               <img src="/images/html/20160829181637762.gif">
             </a> 
         </div>
-		<a name="sfbest_hp_hp_head_logo" href="http://www.e3mall.cn" class="trackref logoleft">
+		<a name="sfbest_hp_hp_head_logo" href="http://www.e3mall.com" class="trackref logoleft">
 		</a>
 		<div class="logo-text">
 			<img src="/images/html/logo_word.jpg">

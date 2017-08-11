@@ -36,7 +36,7 @@ public class ContentServiceImpl implements ContentService {
 		Criteria criteria = example.createCriteria();
 		criteria.andCategoryIdEqualTo(categoryId);
 		// 执行查询
-		List<TbContent> list = contentMapper.selectByExample(example);
+		List<TbContent> list = contentMapper.selectByExampleWithBLOBs(example);
 		// 3、取分页结果total
 		PageInfo<TbContent> pageInfo = new PageInfo<>(list);
 		long total = pageInfo.getTotal();
@@ -68,11 +68,24 @@ public class ContentServiceImpl implements ContentService {
 		return E3Result.ok();
 	}
 
-	public E3Result deleteContent(long id) {
-		// 删除数据库中内容信息
-		contentMapper.deleteByPrimaryKey(id);
+	public E3Result deleteContent(String ids) {
+		String[] contentIds = ids.split(",");
+		for (String id : contentIds) {
+			// 删除数据库中内容信息
+			contentMapper.deleteByPrimaryKey(new Long(id));
+		}
 		// 返回成功
 		return E3Result.ok();
+	}
+
+	public List<TbContent> getContentListByCid(long cid) {
+		// 根据分类id查询内容列表
+		// 设置查询条件
+		TbContentExample example = new TbContentExample();
+		Criteria criteria = example.createCriteria();
+		criteria.andCategoryIdEqualTo(cid);
+		// 执行查询，返回结果
+		return contentMapper.selectByExample(example);
 	}
 
 }

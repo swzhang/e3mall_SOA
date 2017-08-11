@@ -43,7 +43,7 @@ public class ContentController {
 	
 	@RequestMapping("/content/delete")
 	@ResponseBody
-	public E3Result deleteContent(@RequestParam("ids")long id) {
-		return contentService.deleteContent(id);
+	public E3Result deleteContent(String ids) {
+		return contentService.deleteContent(ids);
 	}
 }
