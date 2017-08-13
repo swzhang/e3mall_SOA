@@ -14,3 +14,6 @@
   * sso实现单点登陆
   * 购物车功能实现
   * 使用mycat实现订单系统
+
+系统架构：
+![soa](https://github.com/swzhang/e3mall_SOA/blob/master/e3mall%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84.png)
