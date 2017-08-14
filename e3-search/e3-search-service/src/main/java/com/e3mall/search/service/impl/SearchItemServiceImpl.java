@@ -3,6 +3,7 @@ package com.e3mall.search.service.impl;
 import java.util.List;
 
 import org.apache.solr.client.solrj.SolrServer;
+import org.apache.solr.client.solrj.impl.CloudSolrServer;
 import org.apache.solr.common.SolrInputDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,8 +22,12 @@ public class SearchItemServiceImpl implements SearchItemService {
 
 	@Autowired
 	private SearchItemMapper searchItemMapper;
+	/*// 单机版solr
 	@Autowired
-	private SolrServer solrServer;
+	private SolrServer solrServer;*/
+	// 集群版solr
+	@Autowired
+	private CloudSolrServer solrServer;
 	
 	@Override
 	public E3Result importIndex() {

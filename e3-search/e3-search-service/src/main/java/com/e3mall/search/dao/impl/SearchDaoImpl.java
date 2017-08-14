@@ -22,6 +22,10 @@ import com.e3mall.search.dao.SearchDao;
 @Repository
 public class SearchDaoImpl implements SearchDao {
 	
+	/*// 单机版solr
+	@Autowired
+	private SolrServer solrServer;*/
+	// 集群版solr
 	@Autowired
 	private SolrServer solrServer;
 
