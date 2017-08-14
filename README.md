@@ -1,5 +1,4 @@
 # 使用maven搭建工程e3mall——SSM框架整合
----
 * 技术点
   * 服务中间件dubbo
   * 项目基于SOA架构
@@ -15,5 +14,5 @@
   * 购物车功能实现
   * 使用mycat实现订单系统
 
-系统架构：
+* 系统架构：
 ![e3mall-soa](https://github.com/swzhang/e3mall_SOA/raw/master/e3mall%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84.png)
